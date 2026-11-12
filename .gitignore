@@ -1,0 +1,14 @@
+# DataMesh & OKF Local Cache
+.datamesh/cache/
+*.duckdb
+*.tmp
+
+# Python / Analysis Caches
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+notebooks/

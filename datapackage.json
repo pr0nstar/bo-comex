@@ -1,0 +1,417 @@
+{
+  "name": "bo-comex",
+  "title": "Comercio Exterior de Bolivia (1992-2026)",
+  "description": "Microdatos oficiales armonizados de exportaciones e importaciones de Bolivia (1992-2026) a nivel de partida arancelaria NANDINA (10 dígitos), aduana, medio de transporte, departamento y país de destino/origen.",
+  "version": "1.0.0",
+  "keywords": [
+    "comercio-exterior",
+    "bolivia",
+    "exportaciones",
+    "importaciones",
+    "nandina",
+    "ine",
+    "aduana-nacional",
+    "balanza-comercial",
+    "fob",
+    "cif"
+  ],
+  "license": "CC-BY-4.0",
+  "spatial": {
+    "country": "BO",
+    "regions": [
+      "BO-B",
+      "BO-C",
+      "BO-H",
+      "BO-L",
+      "BO-O",
+      "BO-P",
+      "BO-S",
+      "BO-T",
+      "BO-N"
+    ],
+    "bbox": [
+      -69.64,
+      -22.9,
+      -57.45,
+      -9.67
+    ]
+  },
+  "temporal": {
+    "start": "1992-01-01T00:00:00Z",
+    "end": "2026-03-31T23:59:59Z",
+    "frequency": "monthly"
+  },
+  "sources": [
+    {
+      "title": "Instituto Nacional de Estadística (INE) - Bases de Datos de Comercio Exterior",
+      "path": "http://web2.ine.gob.bo:8081/IneComex/BasesComex.aspx",
+      "attribution": "Elaboración propia con Base de Datos de Comercio Exterior del Instituto Nacional de Estadística",
+      "legal_basis": "Decreto Ley No. 14100 (Arts. 8r y 24), CPE (Arts. 8 y 232), Decreto Supremo 23318-A (Art. 5)"
+    },
+    {
+      "title": "Aduana Nacional de Bolivia",
+      "path": "https://www.aduana.gob.bo"
+    }
+  ],
+  "resources": [
+    {
+      "name": "exportaciones",
+      "title": "Exportaciones de Bolivia (2024)",
+      "description": "Microdatos de exportaciones oficiales de Bolivia clasificados bajo NANDINA, CUCI, GCE, CIIU y actividad económica con valor FOB en dólares estadounidenses y peso neto en kg. Serie histórica 1992-2026 particionada por gestión en exportaciones/*.parquet.",
+      "path": "exportaciones/2024.parquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 534593,
+      "hash": "sha256:3a18ee31b28c7857c894fbd4f0d30675784ba45da174c81244a3ecca173604c5",
+      "schema": {
+        "fields": [
+          {
+            "name": "gestion",
+            "type": "integer",
+            "description": "Año de registro de la exportación (1992-2026)"
+          },
+          {
+            "name": "mes",
+            "type": "integer",
+            "description": "Mes de registro de la exportación (1-12)"
+          },
+          {
+            "name": "flujo",
+            "type": "string",
+            "description": "Tipo de flujo comercial aduanero"
+          },
+          {
+            "name": "nandina",
+            "type": "integer",
+            "description": "Código arancelario de la nomenclatura NANDINA (10 dígitos)",
+            "concept": "https://datos.gob.bo/concept/nandina"
+          },
+          {
+            "name": "desnan",
+            "type": "string",
+            "description": "Descripción de la subpartida arancelaria NANDINA"
+          },
+          {
+            "name": "cap",
+            "type": "integer",
+            "description": "Capítulo arancelario del Sistema Armonizado (2 dígitos)",
+            "concept": "https://datos.gob.bo/concept/nandina"
+          },
+          {
+            "name": "descap",
+            "type": "string",
+            "description": "Descripción del capítulo arancelario"
+          },
+          {
+            "name": "secc",
+            "type": "integer",
+            "description": "Sección del Sistema Armonizado",
+            "concept": "https://datos.gob.bo/concept/nandina"
+          },
+          {
+            "name": "dessec",
+            "type": "string",
+            "description": "Descripción de la sección del Sistema Armonizado"
+          },
+          {
+            "name": "pais",
+            "type": "integer",
+            "description": "Código numérico del país de destino",
+            "concept": "http://www.wikidata.org/entity/Q6256"
+          },
+          {
+            "name": "despais",
+            "type": "string",
+            "description": "Nombre del país de destino de la exportación",
+            "concept": "http://www.wikidata.org/entity/Q6256"
+          },
+          {
+            "name": "area",
+            "type": "integer",
+            "description": "Código de área económica o bloque de integración comercial"
+          },
+          {
+            "name": "desarea",
+            "type": "string",
+            "description": "Descripción del bloque comercial o área económica (ej. ALADI, CAN, UE)"
+          },
+          {
+            "name": "medi",
+            "type": "integer",
+            "description": "Código del modo o medio de transporte internacional de salida"
+          },
+          {
+            "name": "desmedi",
+            "type": "string",
+            "description": "Descripción del modo de transporte (Carretero, Férreo, Aéreo, Fluvial, Ductos)"
+          },
+          {
+            "name": "viasal",
+            "type": "integer",
+            "description": "Código de la vía o aduana de salida del territorio nacional"
+          },
+          {
+            "name": "desvia",
+            "type": "string",
+            "description": "Descripción de la vía de salida aduanera"
+          },
+          {
+            "name": "depart",
+            "type": "integer",
+            "description": "Código del departamento boliviano de origen de la mercancía",
+            "concept": "https://datos.gob.bo/concept/departamentos"
+          },
+          {
+            "name": "desdep",
+            "type": "string",
+            "description": "Nombre del departamento de origen (La Paz, Santa Cruz, etc.)",
+            "concept": "https://datos.gob.bo/concept/departamentos"
+          },
+          {
+            "name": "cuci3",
+            "type": "string",
+            "description": "Código Clasificación Uniforme para el Comercio Internacional (CUCI Rev. 3)"
+          },
+          {
+            "name": "descuci3",
+            "type": "string",
+            "description": "Descripción del grupo de productos según CUCI Rev. 3"
+          },
+          {
+            "name": "gce3",
+            "type": "string",
+            "description": "Código Clasificación por Grandes Categorías Económicas (GCE Rev. 3)"
+          },
+          {
+            "name": "desgce3",
+            "type": "string",
+            "description": "Descripción según Grandes Categorías Económicas (GCE Rev. 3)"
+          },
+          {
+            "name": "ciiur3",
+            "type": "string",
+            "description": "Código Clasificación Industrial Internacional Uniforme (CIIU Rev. 3)"
+          },
+          {
+            "name": "desciiu3",
+            "type": "string",
+            "description": "Descripción de la rama de actividad según CIIU Rev. 3"
+          },
+          {
+            "name": "clact",
+            "type": "string",
+            "description": "Clasificación de gran actividad económica de origen"
+          },
+          {
+            "name": "codact2",
+            "type": "string",
+            "description": "Código de subactividad económica"
+          },
+          {
+            "name": "desact2",
+            "type": "string",
+            "description": "Descripción de subactividad económica"
+          },
+          {
+            "name": "tnt",
+            "type": "integer",
+            "description": "Código de clasificación por tipo de producto (Tradicional / No Tradicional)"
+          },
+          {
+            "name": "destnt",
+            "type": "string",
+            "description": "Descripción del sector de exportación (Minerales, Hidrocarburos, Agropecuario, etc.)"
+          },
+          {
+            "name": "cltnt",
+            "type": "string",
+            "description": "Clasificación analítica de exportaciones tradicionales o no tradicionales"
+          },
+          {
+            "name": "peso_neto_kg",
+            "type": "number",
+            "description": "Peso neto de la mercancía exportada en kilogramos",
+            "unit": "kg",
+            "rdfType": "wd:Q11570"
+          },
+          {
+            "name": "valor",
+            "type": "number",
+            "description": "Valor oficial de la exportación en dólares estadounidenses ($us FOB)",
+            "unit": "USD",
+            "rdfType": "wd:Q4917"
+          }
+        ]
+      }
+    },
+    {
+      "name": "importaciones",
+      "title": "Importaciones de Bolivia (2024)",
+      "description": "Microdatos de importaciones oficiales de Bolivia clasificados bajo NANDINA, GCE, CUODE, CIIU y CUCI, con desglose de aduana de nacionalización, valores FOB/CIF ($us y Bs.) y gravamen aduanero. Serie histórica 1992-2026 particionada por gestión en importaciones/*.parquet.",
+      "path": "importaciones/2024.parquet",
+      "format": "parquet",
+      "mediatype": "application/vnd.apache.parquet",
+      "bytes": 10410598,
+      "hash": "sha256:03d8c2219bf93a219dfb223138e22cccafd08c16ddcb016944780e8513b4a7b1",
+      "schema": {
+        "fields": [
+          {
+            "name": "gestion",
+            "type": "integer",
+            "description": "Año de registro de la importación (1992-2026)"
+          },
+          {
+            "name": "mes",
+            "type": "integer",
+            "description": "Mes de registro de la importación (1-12)"
+          },
+          {
+            "name": "aduana",
+            "type": "integer",
+            "description": "Código de la administración aduanera de ingreso o despacho"
+          },
+          {
+            "name": "desadu",
+            "type": "string",
+            "description": "Nombre de la aduana de nacionalización o despacho"
+          },
+          {
+            "name": "depto",
+            "type": "integer",
+            "description": "Código del departamento boliviano de destino de la mercancía",
+            "concept": "https://datos.gob.bo/concept/departamentos"
+          },
+          {
+            "name": "desdepto",
+            "type": "string",
+            "description": "Nombre del departamento de destino",
+            "concept": "https://datos.gob.bo/concept/departamentos"
+          },
+          {
+            "name": "via",
+            "type": "integer",
+            "description": "Código de la vía aduanera de ingreso al país"
+          },
+          {
+            "name": "desvia",
+            "type": "string",
+            "description": "Descripción de la vía aduanera de ingreso"
+          },
+          {
+            "name": "medio",
+            "type": "integer",
+            "description": "Código del modo o medio de transporte internacional de ingreso"
+          },
+          {
+            "name": "desmed",
+            "type": "string",
+            "description": "Descripción del medio de transporte (Aéreo, Carretero, Férreo, Fluvial, Ductos)"
+          },
+          {
+            "name": "pais",
+            "type": "integer",
+            "description": "Código numérico del país de origen o procedencia",
+            "concept": "http://www.wikidata.org/entity/Q6256"
+          },
+          {
+            "name": "despai",
+            "type": "string",
+            "description": "Nombre del país de procedencia u origen",
+            "concept": "http://www.wikidata.org/entity/Q6256"
+          },
+          {
+            "name": "deszon",
+            "type": "string",
+            "description": "Zona geográfica o denominación regional del país"
+          },
+          {
+            "name": "nandina",
+            "type": "integer",
+            "description": "Código arancelario de la nomenclatura NANDINA (10 dígitos)",
+            "concept": "https://datos.gob.bo/concept/nandina"
+          },
+          {
+            "name": "desnan",
+            "type": "string",
+            "description": "Descripción de la subpartida arancelaria NANDINA"
+          },
+          {
+            "name": "gcer3",
+            "type": "string",
+            "description": "Código Clasificación por Grandes Categorías Económicas (GCE Rev. 3)"
+          },
+          {
+            "name": "desgce",
+            "type": "string",
+            "description": "Descripción según Grandes Categorías Económicas (GCE Rev. 3)"
+          },
+          {
+            "name": "cuode",
+            "type": "string",
+            "description": "Código Clasificación según Uso o Destino Económico (CUODE)"
+          },
+          {
+            "name": "descuo",
+            "type": "string",
+            "description": "Descripción según Uso o Destino Económico (Bienes de Capital, Consumo, etc.)"
+          },
+          {
+            "name": "ciiur3",
+            "type": "string",
+            "description": "Código Clasificación Industrial Internacional Uniforme (CIIU Rev. 3)"
+          },
+          {
+            "name": "desciiu",
+            "type": "string",
+            "description": "Descripción de la rama económica según CIIU Rev. 3"
+          },
+          {
+            "name": "cucir3",
+            "type": "string",
+            "description": "Código Clasificación Uniforme para el Comercio Internacional (CUCI Rev. 3)"
+          },
+          {
+            "name": "descuci",
+            "type": "string",
+            "description": "Descripción según CUCI Rev. 3"
+          },
+          {
+            "name": "peso_bruto_kg",
+            "type": "integer",
+            "description": "Peso bruto de la mercancía importada en kilogramos",
+            "unit": "kg",
+            "rdfType": "wd:Q11570"
+          },
+          {
+            "name": "valor_fob_sus",
+            "type": "integer",
+            "description": "Valor de la importación en dólares estadounidenses ($us FOB)",
+            "unit": "USD",
+            "rdfType": "wd:Q4917"
+          },
+          {
+            "name": "valor_cif_sus",
+            "type": "integer",
+            "description": "Valor de la importación en dólares estadounidenses ($us CIF)",
+            "unit": "USD",
+            "rdfType": "wd:Q4917"
+          },
+          {
+            "name": "valor_cif_bs",
+            "type": "number",
+            "description": "Valor de la importación liquidado en moneda nacional (Bolivianos CIF)",
+            "unit": "BOB",
+            "rdfType": "wd:Q200737"
+          },
+          {
+            "name": "gravamen_aduanero_bs",
+            "type": "integer",
+            "description": "Monto del Gravamen Arancelario aduanero determinado en Bolivianos (Bs.)",
+            "unit": "BOB",
+            "rdfType": "wd:Q200737"
+          }
+        ]
+      }
+    }
+  ]
+}
